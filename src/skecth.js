@@ -44,7 +44,9 @@ function draw() {
             visiteds.push(neighbour);
             stack.push(neighbour);
         }
-    }
+    } else
+        // Stop Calling draw function
+        noLoop();
     grid.show();
 }
 
