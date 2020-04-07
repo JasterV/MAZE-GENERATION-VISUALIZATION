@@ -14,7 +14,7 @@ function setup() {
     // Setting Frame Rate to 30 
     // to visualize better the maze
     // generation algorithm
-    frameRate(30);
+    frameRate(60);
     background(0);
     cols = floor(width / w);
     rows = floor(height / w);
@@ -30,7 +30,7 @@ function setup() {
 function draw() {
     if (!stack.isEmpty()) {
         let currCell = stack.pop();
-        // Paint the cell in blue color if we are
+        // Paint the cell in pink color if we are
         // Removing it from the Stack
         currCell.show(color(255,0,100));
         let neighbours = grid.getCellNeighbours(currCell)
