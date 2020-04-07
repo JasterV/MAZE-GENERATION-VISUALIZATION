@@ -8,6 +8,6 @@ On my way of learning javascript i've build a p5.js sketch that allows us to vis
 
 ### Current version:
 
-  ![Algorithm visualization](https://media.giphy.com/media/fXsnsudJOG8f1o8t0K/giphy.gif)
+  ![Algorithm visualization](https://media.giphy.com/media/RJzsArRS7e8WHpwu6i/giphy.gif)
 
 
