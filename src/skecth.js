@@ -12,7 +12,7 @@ const visiteds = [];
 function setup() {
     createCanvas(windowWidth, windowHeight);
     background(51);
-    // Setting Frame Rate to 10 
+    // Setting Frame Rate to 20 
     // to visualize better the maze
     // generation algorithm
     frameRate(20);
