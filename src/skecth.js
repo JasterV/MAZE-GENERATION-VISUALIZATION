@@ -7,15 +7,13 @@ let grid;
 // Data structures for implementing
 // Depth-first search
 const stack = createStack();
-const visiteds = [];
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
     // Setting Frame Rate to 30 
     // to visualize better the maze
     // generation algorithm
-    frameRate(60);
-    background(0);
+    frameRate(20);
     cols = floor(width / w);
     rows = floor(height / w);
     grid = createGrid(rows, cols);
@@ -23,31 +21,27 @@ function setup() {
     // to the stack and setting it 
     // to visited 
     let init_cell = grid.getCell(0, 0);
-    visiteds.push(init_cell);
+    init_cell.setVisited();
     stack.push(init_cell);
 }
 
 function draw() {
+    background(0);
+    grid.show();
     if (!stack.isEmpty()) {
         let currCell = stack.pop();
-        // Paint the cell in pink color if we are
-        // Removing it from the Stack
-        currCell.show(color(255,0,100));
         let neighbours = grid.getCellNeighbours(currCell)
-                             .filter((value) => !visiteds.includes(value));
+                             .filter((value) => !value.isVisited());
+        // Show the current cell in pink
+        currCell.show(color(255, 0, 200));
         if (neighbours.length > 0) {
             stack.push(currCell);
-            // Paint the cell in white if
-            // we still pushing into the stack
-            currCell.show(255);
             let neighbour = neighbours[Math.floor(Math.random() * neighbours.length)];
             grid.removeWallBetween(currCell, neighbour);
-            visiteds.push(neighbour);
+            neighbour.setVisited();
             stack.push(neighbour);
         }
-    } else{
-        grid.show();
+    } else
         noLoop();
-    }
 }
 

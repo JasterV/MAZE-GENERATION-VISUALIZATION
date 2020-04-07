@@ -87,23 +87,33 @@ function createCell(i, j) {
         bottom: true,
         right: true,
     }
+    let visited = false;
     return {
         i,
         j,
         walls,
+        setVisited() {
+            visited = true;
+        },
+        isVisited() {
+            return visited;
+        },
         show(color) {
             stroke(0);
-            if (walls.top)
-                line(x, y, x + w, y);
-            if (walls.left)
-                line(x, y, x, y + w);
-            if (walls.bottom)
-                line(x, y + w, x + w, y + w);
-            if (walls.right)
-                line(x + w, y, x + w, y + w);
-            noStroke();
-            fill(color);
-            rect(x, y, w, w);
+            if (visited) {
+                if (walls.top)
+                    line(x, y, x + w, y);
+                if (walls.left)
+                    line(x, y, x, y + w);
+                if (walls.bottom)
+                    line(x, y + w, x + w, y + w);
+                if (walls.right)
+                    line(x + w, y, x + w, y + w);
+                noStroke();
+                fill(color);
+                rect(x, y, w, w);
+            }
+
         }
     }
 }
