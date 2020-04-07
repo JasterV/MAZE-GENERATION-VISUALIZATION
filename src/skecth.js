@@ -28,7 +28,7 @@ function setup() {
 }
 
 function draw() {
-    background(255);
+    background(240);
     if (!stack.isEmpty()) {
         let currCell = stack.pop();
         // Painting the current cell 
