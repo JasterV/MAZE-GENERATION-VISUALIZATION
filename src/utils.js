@@ -67,8 +67,9 @@ function createGrid(rows, cols) {
             }
         },
         show() {
+            fill(255);
             for (let i = 0; i < cells.length; i++)
-                cells[i].show();
+                cells[i].show(200);
         }
     }
 }
@@ -90,7 +91,7 @@ function createCell(i, j) {
         i,
         j,
         walls,
-        show() {
+        show(color) {
             stroke(0);
             if (walls.top)
                 line(x, y, x + w, y);
@@ -100,6 +101,9 @@ function createCell(i, j) {
                 line(x, y + w, x + w, y + w);
             if (walls.right)
                 line(x + w, y, x + w, y + w);
+            noStroke();
+            fill(color);
+            rect(x, y, w, w);
         }
     }
 }

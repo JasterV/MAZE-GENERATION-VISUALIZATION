@@ -1,5 +1,5 @@
 const windowHeight = 800;
-const windowWidth = 800;
+const windowWidth = 1000;
 const w = 40;
 let cols, rows;
 let grid;
@@ -11,11 +11,11 @@ const visiteds = [];
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
-    background(51);
-    // Setting Frame Rate to 20 
+    // Setting Frame Rate to 30 
     // to visualize better the maze
     // generation algorithm
-    frameRate(20);
+    frameRate(30);
+    background(0);
     cols = floor(width / w);
     rows = floor(height / w);
     grid = createGrid(rows, cols);
@@ -28,25 +28,26 @@ function setup() {
 }
 
 function draw() {
-    background(240);
     if (!stack.isEmpty()) {
         let currCell = stack.pop();
-        // Painting the current cell 
-        // to help to visualize
-        fill(255, 0, 200);
-        rect(currCell.j * w, currCell.i * w, w, w);
+        // Paint the cell in blue color if we are
+        // Removing it from the Stack
+        currCell.show(color(255,0,100));
         let neighbours = grid.getCellNeighbours(currCell)
                              .filter((value) => !visiteds.includes(value));
         if (neighbours.length > 0) {
             stack.push(currCell);
+            // Paint the cell in white if
+            // we still pushing into the stack
+            currCell.show(255);
             let neighbour = neighbours[Math.floor(Math.random() * neighbours.length)];
             grid.removeWallBetween(currCell, neighbour);
             visiteds.push(neighbour);
             stack.push(neighbour);
         }
-    } else
-        // Stop Calling draw function
+    } else{
+        grid.show();
         noLoop();
-    grid.show();
+    }
 }
 
