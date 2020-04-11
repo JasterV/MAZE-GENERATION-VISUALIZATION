@@ -11,3 +11,4 @@ On my way of learning javascript i've build a p5.js sketch that allows us to vis
   ![Algorithm visualization](https://media.giphy.com/media/RJzsArRS7e8WHpwu6i/giphy.gif)
 
 
+What was going through the minds of all of Chuck Norris' victims before they died? His shoe.
